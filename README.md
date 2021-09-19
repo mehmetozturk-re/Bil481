@@ -17,6 +17,6 @@ Demo site: https://desolate-sierra-24662.herokuapp.com/
     This project has one function in App.java file.
     The function is sortTheArrayBetweenIndexes.
 
-    Taking an array, two index and a boolean variable and sorting the integers between received indices in array ascending or descending according to received boolean variable is what this function does.
+    The function is taking an array, two index and a boolean variable and sorting the integers between received indices in array ascending or descending according to received boolean variable.
 
 Line after adding a line to README file for "feature/xyz".
