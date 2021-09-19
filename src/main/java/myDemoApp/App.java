@@ -8,8 +8,11 @@ import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.post;
 
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import spark.ModelAndView;
 import spark.template.mustache.MustacheTemplateEngine;
@@ -18,41 +21,15 @@ public class App {
     public String getGreeting() {
         return "Hello world.";
     }
-        
-    public static int[] sortTheArrayBetweenIndexes(int[] array,int firstIndex,int secondIndex,boolean decreasedOrIncrease){//true:decrease,false:increase
-        if(firstIndex>secondIndex){
-            int temp=firstIndex;
-            firstIndex=secondIndex;
-            secondIndex=temp; 
-        }
-        if(firstIndex<0){
-            firstIndex=0;
-        }
-        if(secondIndex>array.length-1){
-            secondIndex=array.length-1;
-        }
-        int key;
-        for(int i=firstIndex+1;i<=secondIndex;i++){
-            key=array[i];
-            int j=i-1;
-            if(!decreasedOrIncrease){
-                while(j>=firstIndex && array[j]>key){
-                    array[j+1]=array[j];
-                    j--;
-                }
-            }
-            else{
-                while(j>=firstIndex && array[j]<key){
-                    array[j+1]=array[j];
-                    j--;
-                }
-            }
-            array[j+1]=key;
-        } 
-        return array;
-    }  
     
     public static void main(String[] args) {
+        Logger logger = Logger.getLogger("App");
+        logger.log(Level.INFO,"Hello World");
+
+        int port = Integer.parseInt(System.getenv("PORT"));
+        port(port);
+        logger.log(Level.INFO,"Current port number:" + port);
+
         port(getHerokuAssignedPort());
 
         get("/", (req, res) -> "Hello, World");
@@ -129,5 +106,38 @@ public class App {
         }
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
+
+    public static int[] sortTheArrayBetweenIndexes(int[] array,int firstIndex,int secondIndex,boolean decreasedOrIncrease){//true:decrease,false:increase
+        if(firstIndex>secondIndex){
+            int temp=firstIndex;
+            firstIndex=secondIndex;
+            secondIndex=temp; 
+        }
+        if(firstIndex<0){
+            firstIndex=0;
+        }
+        if(secondIndex>array.length-1){
+            secondIndex=array.length-1;
+        }
+        int key;
+        for(int i=firstIndex+1;i<=secondIndex;i++){
+            key=array[i];
+            int j=i-1;
+            if(!decreasedOrIncrease){
+                while(j>=firstIndex && array[j]>key){
+                    array[j+1]=array[j];
+                    j--;
+                }
+            }
+            else{
+                while(j>=firstIndex && array[j]<key){
+                    array[j+1]=array[j];
+                    j--;
+                }
+            }
+            array[j+1]=key;
+        } 
+        return array;
+    }  
 
 }
