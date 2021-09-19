@@ -13,8 +13,9 @@
 Demo site: https://desolate-sierra-24662.herokuapp.com/
 
 **Project Function**
-    This project has one simple algorithm in App.java file. The algorithm is in sortTheArrayBetweenIndexes function.
 
-    The algorithm is taking an array, two index and a boolean variable and sorting the integers between received indices in array ascending or descending according to received boolean variable.
+This project has one simple algorithm in App.java file. The algorithm is in sortTheArrayBetweenIndexes function.
+
+The algorithm is taking an array, two index and a boolean variable and sorting the integers between received indices in array ascending or descending according to received boolean variable.
 
 Line after adding a line to README file for "feature/xyz".
